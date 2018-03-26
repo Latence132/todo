@@ -2,65 +2,54 @@
     <div>
         {{ msg }}
         <br/>
-        <Task/>
-<!--
-        <div class="ui input" >
-            <input type="text" v-on:keyup.enter="add" v-model="nouvelItem" name="nouvelItem" >
-        </div>
--->
-        <div class="ui list" v-for="item in items" :key="item">
-            <div class="ui right labeled left icon input list" >
-                <i class="tags icon"></i>
-                <input type="text" placeholder="Chose à faire"  :value="item" :name="item" :class="done">
-                <a class="ui tag label"  @click="done(item)" :name="item">
-                     <i class="check icon"></i>
-                </a>
-                <a class="ui tag label" @click="remove(item)" :name="item">
-                   <i class="trash icon"></i>
-                </a>
+        <Task v-on:keyup.enter="add(taskName2)" v-model="currentTask" />
+        <div class="ui list" v-for="task in tasklist" tag="ul">
+            <div class="ui right labeled left icon input list" tag="li">
+                <Task :taskName2="task.taskName2"  :fait2="task.fait2"/>
             </div>
         </div>
+        {{ currentTask.taskName2}} {{ currentTask.fait2}}
     </div>
+    
 </template>
 <script>
 import Task from './Task'
 export default {
 name: 'To-do-list',
+    components:{
+        Task
+    },
     data () {
         return {
-			Task : { taskName : 'Nouvelle chose à faire', fait: false},
-            nouvelItem: 'Nouvelle chose à faire',
             msg: 'Welcome to To do list',
-            items: ['JS', 'Vuejs', 'NodeJS']
+            tasklist : [{ taskName2 : 'blabla' , fait2 : true}, { taskName2 : 'blabla2' , fait2 : false} ],
+            currentTask : {type : Task}
         }   
     },
     methods: {
-        add(){
-                console.log('appel fct Add');
-                this.items.push(this.nouvelItem)
+        add(taskName2){
+            this.currentTask.taskName2 = taskName2.srcElement.value;
+            this.currentTask.fait2 = false;
+            console.log('appel fct Add');
+            console.log(this.currentTask);
+            this.tasklist.push(this.currentTask);
         },
        
-        remove(item){
+        remove(taskName2){
             //  supprimé l'item
             // l'index de l'élément: items.indexof(this.item)
             // suppréssion dasn le tableau this.items.slice(items.indexof(this.item),1)
-            this.items.splice(this.items.indexOf(item),1);
+            this.tasklist.splice(this.tasklist.indexOf(taskName2),1);
         }
     },
-    computed:{
-         done(item){
-            //  barré la chose faire
-            console.log('appel fct Done');
-            return {  'text-decoration': 'line-through'}
-        },
-    }
+//    mounted: {
+////        this.tasklist.push();
+////        this.tasklist.push(null);
+//    },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-    .done{
-        text-decoration: line-through;
-    }
 </style>
