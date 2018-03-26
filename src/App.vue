@@ -1,19 +1,15 @@
 <template>
-  <div id="app" class="ui center aligned container segment">
-    <!--    <HelloWorld/>-->
+<div id="app" class="ui center aligned container segment" style="{ background : #6f2929 }">
       <Todo/>
-
-  </div>
+</div>
 </template>
 
 <script>
-//  import HelloWorld from './components/HelloWorld'
 import Todo from './components/Todo'
 
 export default {
   name: 'App',
   components: {
-    //  HelloWorld
     Todo
   }
 }

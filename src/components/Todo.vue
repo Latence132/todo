@@ -2,9 +2,12 @@
     <div>
         {{ msg }}
         <br/>
+        <Task/>
+<!--
         <div class="ui input" >
             <input type="text" v-on:keyup.enter="add" v-model="nouvelItem" name="nouvelItem" >
         </div>
+-->
         <div class="ui list" v-for="item in items" :key="item">
             <div class="ui right labeled left icon input list" >
                 <i class="tags icon"></i>
@@ -20,10 +23,12 @@
     </div>
 </template>
 <script>
+import Task from './Task'
 export default {
 name: 'To-do-list',
     data () {
         return {
+			Task : { taskName : 'Nouvelle chose à faire', fait: false},
             nouvelItem: 'Nouvelle chose à faire',
             msg: 'Welcome to To do list',
             items: ['JS', 'Vuejs', 'NodeJS']
