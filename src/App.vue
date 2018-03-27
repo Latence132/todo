@@ -1,5 +1,5 @@
 <template>
-<div id="app" class="ui center aligned container segment" style="{ background : #6f2929 }">
+<div class="ui center aligned container segment" style="{ background : #6f2929 }">
       <Todo/>
 </div>
 </template>
@@ -15,6 +15,6 @@ export default {
 }
 </script>
 
-<style>
+<style src="./todo.css">
 
 </style>

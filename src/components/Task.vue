@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="ui right labeled left icon input" >
+        <div class="ui right labeled left icon input">
             <input type="text" v-on:keyup.enter="$parent.add" v-model="taskName2" :name="taskName2" :style="style">
-             <a class="ui tag label"  @click="done()" name="taskNameDone">
+             <a class="ui tag label"  @click="$parent.done(taskName2)" name="taskNameDone">
 			  <i class="check icon"></i>
 			</a>
        		<a class="ui tag label" @click="$parent.remove(taskName2)" name="taskNameTrash">
@@ -19,15 +19,15 @@ export default {
       fait2: {type : Boolean, default : false }
   },
   methods:{
-	done () {
-      //  barré la chose faire
-	  console.log('Appel fct done()');
-	  this.fait2 = !this.fait2 
-    },
-	remove (){
-		console.log('Appel fct destroy()');
-		this.$destroy()
-	},
+//	done () {
+//      //  barré la chose faire
+//	  console.log('Appel fct done()');
+//	  this.fait2 = !this.fait2 
+//    },
+//	remove (){
+//		console.log('Appel fct destroy()');
+//		this.$destroy()
+//	},
     rename (taskName) {
       console.log('fonction rename');
       this.taskName = this.taskName2
