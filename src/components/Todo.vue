@@ -54,13 +54,18 @@ name: 'To-do-list',
             //  supprimé l'item
             // l'index de l'élément: items.indexof(this.item)
             // suppréssion dasn le tableau this.items.slice(items.indexof(this.item),1)
-            this.tasklist.splice(this.tasklist.indexOf(taskName2),1);
+            console.log(this.tasklist.filter(task => task.taskName2 == taskName2));
+            this.tasklist.splice(this.tasklist.filter(task => task.taskName2 == taskName2),1);
         },
-        done(task){
+        done(taskName2){
             console.log('fonction done parent');
-            console.log(task);
-            console.log(this.tasklist);
-            console.log(this.tasklist.indexOf(task));
+//            console.log(taskName2);
+            console.log(this.task);
+            console.log(this.tasklist.filter(task => task.taskName2 == taskName2)[0].fait2);
+            this.tasklist.filter(task => task.taskName2 == taskName2)[0].fait2 = !this.tasklist.filter(task => task.taskName2 == taskName2)[0].fait2
+            
+
+//            console.log(this.tasklist.indexOf(taskName2));
 //            task.fait2 = !task.fait2
 
         }

@@ -1,5 +1,4 @@
 <template>
-    <div>
         <div class="ui right labeled left icon input">
             <input type="text" v-on:keyup.enter="$parent.add" v-model="taskName2" :name="taskName2" :style="style">
              <a class="ui tag label"  @click="$parent.done(taskName2)" name="taskNameDone">
@@ -9,7 +8,6 @@
                <i class="trash icon"></i>
             </a>
         </div>
-    </div>
 </template>
 <script>
 export default {
