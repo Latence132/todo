@@ -1,6 +1,6 @@
 <template>
         <div class="ui right labeled left icon input">
-            <input type="text" v-on:keyup.enter="$parent.add" v-model="taskName2" :name="taskName2" :style="style">
+            <input type="text"  v-model="taskName2" :name="taskName2" :style="style">
              <a class="ui tag label"  @click="$parent.done(taskName2)" name="taskNameDone">
 			  <i class="check icon"></i>
 			</a>

@@ -4,7 +4,15 @@
         
         <br/>
         <ul>
-            <Task v-on:keyup.enter="add(taskName2)" v-model="currentTask" tag="li"/>
+            <div class="ui right labeled left icon input">
+                <input type="text" v-on:keyup.enter="add(currentTask)" v-model="currentTask" value="currentTask">
+                 <a class="ui tag label"  @click="$parent.done(taskName2)" name="taskNameDone">
+                  <i class="check icon"></i>
+                </a>
+                <a class="ui tag label" @click="$parent.remove(taskName2)" name="taskNameTrash">
+                   <i class="trash icon"></i>
+                </a>
+            </div>
         
             <div class="ui list" v-for="task in filteredTasktlist">
                <li :class="{completed : task.fait2}">
@@ -38,17 +46,17 @@ name: 'To-do-list',
         return {
             msg: 'To do list',
             tasklist : [{ taskName2 : 'blabla' , fait2 : true}, { taskName2 : 'blabla2' , fait2 : false} ],
-            currentTask : {type : Task},
+            currentTask : 'nouvelle tache',
             filter: 'all'
         }   
     },
     methods: {
-        add(taskName2){
-            this.currentTask.taskName2 = taskName2.srcElement.value;
-            this.currentTask.fait2 = false;
+        add(){
+//            this.currentTask.taskName2 = taskName2.srcElement.value;
+//            this.currentTask.fait2 = false;
             console.log('appel fct Add');
             console.log(this.currentTask);
-            this.tasklist.push(this.currentTask);
+            this.tasklist.push({taskName2:this.currentTask, fait2:false});
         },
         remove(taskName2){
             //  supprimé l'item
